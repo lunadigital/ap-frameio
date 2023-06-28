@@ -46,7 +46,7 @@ def get_projects(params={}):
 
 def upload(project_id, file_path):
     payload = {
-        "name": file_path,
+        "name": file_path.split("/")[-1],
         "type": "file",
         "filetype": mimetypes.guess_type(file_path)
     }
@@ -54,7 +54,7 @@ def upload(project_id, file_path):
     create_headers = deepcopy(headers)
     create_headers["Content-Type"] = "application/json"
 
-    with open(file_data.path, 'rb') as file:
+    with open(file_path.path, 'rb') as file:
         response = requests.post(
             f"https://api.frame.io/v2/files/{project_id}",
             json=payload,
@@ -63,9 +63,9 @@ def upload(project_id, file_path):
         )
 
     if response.status_code == 200:
-        print(f"{file_data.name} uploaded successfully!")
+        print(f"{file_path} uploaded successfully!")
     else:
-        print(f"There was a problem uploading {file_data.name}.")
+        print(f"There was a problem uploading {file_path}.")
 
 if len(ctx.selected_files) > 0:
     ap_project = aps.get_project(ctx.path)
