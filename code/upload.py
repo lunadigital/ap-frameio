@@ -61,7 +61,7 @@ def upload(project_id, file_path):
             f"https://api.frame.io/v2/files/{project_id}",
             json=payload,
             headers=create_headers,
-            file={"file": file}
+            files={"file": file}
         )
 
     print(response.text)
