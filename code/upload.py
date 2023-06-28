@@ -30,8 +30,10 @@ def get_team_id():
     return team_id
 
 def get_projects(params={}):
+    team_id = get_team_id()
+
     response = requests.get(
-        f"https://api.frame.io/v2/teams/{get_team_id()}/projects",
+        f"https://api.frame.io/v2/teams/{team_id}/projects",
         headers=headers,
         params=params
     )
@@ -86,8 +88,10 @@ if len(ctx.selected_files) > 0:
             create_headers = deepcopy(headers)
             create_headers["Content-Type"] = "application/json"
 
+            team_id = get_team_id()
+
             response = requests.post(
-                f"https://api.frame.io/v2/teams/{get_team_id()}/projects",
+                f"https://api.frame.io/v2/teams/{team_id}/projects",
                 json=payload,
                 headers=create_headers
             )
