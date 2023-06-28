@@ -75,6 +75,7 @@ if len(ctx.selected_files) > 0:
     ap_project = aps.get_project(ctx.path)
     project_settings = aps.Settings(identifier=ap_project.id)
     project_id = project_settings.get("frameio_id", "")
+    print(f"Project ID: {project_id}")
 
     if not project_id:
         # Frameio project id not associated in Anchorpoint, try to find
