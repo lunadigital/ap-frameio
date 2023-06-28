@@ -20,6 +20,7 @@ def get_team_id():
             "https://api.frame.io/v2/teams/",
             headers=headers
         )
+        print(response.text)
 
         if response.status_code == 200:
             data = response.json()[0]
@@ -37,6 +38,7 @@ def get_projects(params={}):
         headers=headers,
         params=params
     )
+    print(response.text)
 
     if response.status_code == 200:   
         return [{"id": project["id"], "name": project["name"]} for project in response.json()]
@@ -62,6 +64,8 @@ def upload(project_id, file_path):
             file={"file": file}
         )
 
+    print(response.text)
+    
     if response.status_code == 200:
         print(f"{file_path} uploaded successfully!")
     else:
@@ -95,6 +99,7 @@ if len(ctx.selected_files) > 0:
                 json=payload,
                 headers=create_headers
             )
+            print(response.text)
 
             if response.status_code == 200:
                 project_id = response.json()[0]["id"]
