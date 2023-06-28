@@ -16,7 +16,7 @@ def get_team_id():
     team_id = settings.get("team_id", "")
 
     if not team_id:
-        response = requests(
+        response = requests.get(
             "https://api.frame.io/v2/teams/",
             headers=headers
         )
