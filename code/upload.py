@@ -112,4 +112,4 @@ if len(ctx.selected_files) > 0:
 
     for file_path in ctx.selected_files:
         print(f"Uploading {file_path}...")
-        ctx.run_async(upload, [project_id, file_path])
+        ctx.run_async(upload, project_id, file_path)
