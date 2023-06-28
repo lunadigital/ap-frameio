@@ -97,9 +97,9 @@ if len(ctx.selected_files) > 0:
             )
 
             if response.status_code == 200:
-                project_id = response.json()["id"]
+                project_id = response.json()[0]["id"]
         else:
-            project_id = frameio_project["id"]
+            project_id = frameio_project[0]["id"]
         
         project_settings.set("frameio_id", project_id)
         project_settings.store()
