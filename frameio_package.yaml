@@ -1,0 +1,18 @@
+version: 1.0
+
+action:
+  name: "Frame.io"
+  id: "ap::package::frameio"
+  category: "video"
+  type: package
+  enable: false
+  author: Luna Digital, Ltd.
+  description: Lets you upload files to Frame.io for review and sharing.
+
+  settings: "code/settings.py"
+
+  python_packages:
+    - requests
+
+  actions:
+    - ap::video::uploadtoframeio

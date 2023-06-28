@@ -1,0 +1,15 @@
+version: "1.0"
+
+action:
+  name: "Upload to Frame.io"
+  id: "ap::video::uploadtoframeio"
+  category: "video"
+  type: python
+  author: Luna Digital, Ltd.
+  description: An action that uploads image files and videos to Frame.io
+
+  script: "code/upload.py"
+
+  register:
+    file:
+      filter: "*.mov;*.mp4;*.png"
