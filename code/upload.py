@@ -56,7 +56,7 @@ def upload(project_id, file_path):
     create_headers = deepcopy(headers)
     create_headers["Content-Type"] = "application/json"
 
-    with open(file_path.path, 'rb') as file:
+    with open(file_path, 'rb') as file:
         response = requests.post(
             f"https://api.frame.io/v2/files/{project_id}",
             json=payload,
