@@ -44,11 +44,11 @@ def get_projects(params={}):
     print("ERROR: No team id found.")
     return []
 
-def upload(project_id, file_data):
+def upload(project_id, file_path):
     payload = {
-        "name": file_data.name,
+        "name": file_path,
         "type": "file",
-        "filetype": mimetypes.guess_type(file_data.path)
+        "filetype": mimetypes.guess_type(file_path)
     }
 
     create_headers = deepcopy(headers)
@@ -104,6 +104,6 @@ if len(ctx.selected_files) > 0:
         project_settings.set("frameio_id", project_id)
         project_settings.store()
 
-    for f in ctx.selected_files:
-        print(f"Uploading {f.name}...")
-        ctx.run_async(upload, [project_id, f])
+    for file_path in ctx.selected_files:
+        print(f"Uploading {file_path}...")
+        ctx.run_async(upload, [project_id, file_path])
